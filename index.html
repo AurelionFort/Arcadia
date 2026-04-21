@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Aurelius | Arcadia Vision</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --gold:#d6b25e;
+  --navy:#0b1026;
+  --dark:#050814;
+  --glass:rgba(255,255,255,0.06);
+  --text:#f8f9ff;
+}
+
+/* RESET */
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  font-family:Inter,sans-serif;
+  background:var(--dark);
+  color:var(--text);
+  overflow-x:hidden;
+}
+
+/* ===== CINEMATIC BACKGROUND ===== */
+.bg{
+  position:fixed;
+  inset:0;
+  z-index:-3;
+  background:radial-gradient(circle at 20% 20%, rgba(214,178,94,0.15), transparent 40%),
+             radial-gradient(circle at 80% 70%, rgba(80,120,255,0.12), transparent 40%),
+             linear-gradient(180deg,#050814,#0b1026);
+}
+
+/* FLOATING ORBS */
+.orb{
+  position:absolute;
+  border-radius:50%;
+  filter:blur(60px);
+  opacity:0.5;
+  animation:float 10s infinite ease-in-out;
+}
+
+.orb1{width:300px;height:300px;background:var(--gold);top:10%;left:10%;}
+.orb2{width:400px;height:400px;background:#4f7cff;bottom:10%;right:10%;animation-delay:2s;}
+.orb3{width:250px;height:250px;background:#ffffff;top:50%;left:60%;animation-delay:4s;}
+
+@keyframes float{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-40px);}
+}
+
+/* HERO */
+header{
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+
+.hero{
+  max-width:900px;
+  position:relative;
+  transform:translateY(40px);
+}
+
+.badge{
+  display:inline-block;
+  padding:6px 18px;
+  border-radius:50px;
+  background:linear-gradient(135deg,var(--gold),#f4d03f);
+  color:#000;
+  font-weight:600;
+  margin-bottom:20px;
+  box-shadow:0 0 30px rgba(214,178,94,0.4);
+}
+
+h1{
+  font-size:clamp(3rem,8vw,6rem);
+  background:linear-gradient(135deg,var(--gold),white);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  letter-spacing:2px;
+}
+
+.hero p{
+  color:#cfd6ff;
+  margin-top:20px;
+  font-size:1.1rem;
+  opacity:0.8;
+}
+
+/* PARALLAX LAYERS */
+.layer{
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+}
+
+/* SECTION */
+section{
+  padding:120px 20px;
+  max-width:1100px;
+  margin:auto;
+}
+
+.title{
+  text-align:center;
+  font-size:2.4rem;
+  color:var(--gold);
+  margin-bottom:10px;
+  text-shadow:0 0 20px rgba(214,178,94,0.3);
+}
+
+.subtitle{
+  text-align:center;
+  color:#aab3c5;
+  margin-bottom:50px;
+}
+
+/* CARDS */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:20px;
+}
+
+.card{
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.1);
+  padding:25px;
+  border-radius:16px;
+  backdrop-filter:blur(10px);
+  transition:0.4s;
+  position:relative;
+  overflow:hidden;
+}
+
+.card::before{
+  content:"";
+  position:absolute;
+  inset:-50%;
+  background:radial-gradient(circle,rgba(214,178,94,0.2),transparent 60%);
+  opacity:0;
+  transition:0.4s;
+}
+
+.card:hover{
+  transform:translateY(-10px) scale(1.02);
+  border-color:var(--gold);
+  box-shadow:0 0 40px rgba(214,178,94,0.2);
+}
+
+.card:hover::before{
+  opacity:1;
+}
+
+.card h3{
+  margin-bottom:10px;
+  color:white;
+}
+
+.card p{
+  color:#b8c0d9;
+  font-size:0.95rem;
+}
+
+.goal{
+  margin-top:25px;
+  text-align:center;
+  color:var(--gold);
+  font-style:italic;
+}
+
+/* FADE ANIMATION */
+.fade{
+  opacity:0;
+  transform:translateY(50px);
+  transition:1s ease;
+}
+
+.fade.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* LIGHT SWEEP EFFECT */
+body::after{
+  content:"";
+  position:fixed;
+  top:0;
+  left:-50%;
+  width:50%;
+  height:100%;
+  background:linear-gradient(120deg,transparent,rgba(255,255,255,0.08),transparent);
+  transform:skewX(-20deg);
+  animation:shine 8s infinite;
+  pointer-events:none;
+}
+
+@keyframes shine{
+  0%{left:-60%;}
+  50%{left:120%;}
+  100%{left:120%;}
+}
+
+/* MOBILE */
+@media(max-width:768px){
+  section{padding:80px 15px;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="bg">
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="orb orb3"></div>
+</div>
+
+<header>
+  <div class="hero">
+    <div class="badge">ARCADIA VISION</div>
+    <h1>AURELIUS</h1>
+    <p>A structured future built on strength, clarity, and unity</p>
+  </div>
+</header>
+
+<!-- 1 -->
+<section class="fade">
+  <div class="title">STRONG FOUNDATIONS</div>
+  <div class="subtitle">Infrastructure as the backbone of progress</div>
+
+  <div class="grid">
+    <div class="card"><h3>Transport Upgrade</h3><p>Roads, bridges, rural connectivity to urban standard</p></div>
+    <div class="card"><h3>Healthcare System</h3><p>Fast emergency response modernization</p></div>
+    <div class="card"><h3>Utilities Expansion</h3><p>Electricity & clean water for all districts</p></div>
+  </div>
+
+  <div class="goal">No region left structurally behind.</div>
+</section>
+
+<!-- 2 -->
+<section class="fade">
+  <div class="title">EDUCATION FOR THE NEXT ERA</div>
+
+  <div class="grid">
+    <div class="card"><h3>Skill Learning</h3><p>Practical + academic integration</p></div>
+    <div class="card"><h3>Digital Classrooms</h3><p>Nationwide learning systems</p></div>
+    <div class="card"><h3>Tech Institutes</h3><p>Engineering & applied sciences focus</p></div>
+  </div>
+
+  <div class="goal">A workforce ready for real economic demands.</div>
+</section>
+
+<!-- 3 -->
+<section class="fade">
+  <div class="title">ECONOMIC EXPANSION</div>
+
+  <div class="grid">
+    <div class="card"><h3>SME Growth</h3><p>Low-interest development support</p></div>
+    <div class="card"><h3>Innovation Zones</h3><p>Startup ecosystems</p></div>
+    <div class="card"><h3>Trade Systems</h3><p>Stronger supply chains</p></div>
+  </div>
+
+  <div class="goal">A self-expanding productive economy.</div>
+</section>
+
+<!-- 4 -->
+<section class="fade">
+  <div class="title">GOVERNANCE SYSTEMS</div>
+
+  <div class="grid">
+    <div class="card"><h3>Digital State</h3><p>Fully digitized services</p></div>
+    <div class="card"><h3>Transparency</h3><p>Public progress tracking</p></div>
+    <div class="card"><h3>Anti-Corruption</h3><p>Independent auditing systems</p></div>
+  </div>
+
+  <div class="goal">A government that responds, not delays.</div>
+</section>
+
+<!-- 5 -->
+<section class="fade">
+  <div class="title">ENVIRONMENTAL STABILITY</div>
+
+  <div class="grid">
+    <div class="card"><h3>Reforestation</h3><p>Large-scale ecological recovery</p></div>
+    <div class="card"><h3>Water Systems</h3><p>River restoration programs</p></div>
+    <div class="card"><h3>Renewables</h3><p>Clean energy transition</p></div>
+  </div>
+
+  <div class="goal">Development without environmental loss.</div>
+</section>
+
+<!-- 6 -->
+<section class="fade">
+  <div class="title">PUBLIC SAFETY</div>
+
+  <div class="grid">
+    <div class="card"><h3>Emergency Systems</h3><p>Rapid response modernization</p></div>
+    <div class="card"><h3>Disaster Alerts</h3><p>Early warning infrastructure</p></div>
+    <div class="card"><h3>Local Networks</h3><p>Community resilience systems</p></div>
+  </div>
+
+  <div class="goal">Faster response, lower loss, higher preparedness.</div>
+</section>
+
+<!-- 7 -->
+<section class="fade">
+  <div class="title">UNITY & INTEGRATION</div>
+
+  <div class="grid">
+    <div class="card"><h3>National Coordination</h3><p>Aligned institutions</p></div>
+    <div class="card"><h3>Balanced Growth</h3><p>Equal regional progress</p></div>
+    <div class="card"><h3>Shared Identity</h3><p>Civic unity initiatives</p></div>
+  </div>
+
+  <div class="goal">Integration without imbalance.</div>
+</section>
+
+<script>
+// FADE ON SCROLL
+const sections=document.querySelectorAll(".fade");
+
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add("show");
+    }
+  });
+},{threshold:0.2});
+
+sections.forEach(s=>obs.observe(s));
+
+// PARALLAX HERO EFFECT
+document.addEventListener("mousemove",(e)=>{
+  const x=(e.clientX/window.innerWidth-0.5)*20;
+  const y=(e.clientY/window.innerHeight-0.5)*20;
+  document.querySelector(".hero").style.transform=
+    `translate(${x}px,${y}px)`;
+});
+</script>
+
+</body>
+</html>
